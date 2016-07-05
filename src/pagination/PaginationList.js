@@ -62,11 +62,11 @@ class PaginationList extends Component {
     this.totalPages = Math.ceil(dataSize / sizePerPage);
     this.lastPage = this.props.pageStartIndex + this.totalPages - 1;
     const pageBtns = this.makePage();
-    const pageListStyle = {
-      // float: 'right',
-      // override the margin-top defined in .pagination class in bootstrap.
-      marginTop: '0px'
-    };
+    // const pageListStyle = {
+    //   // float: 'right',
+    //   // override the margin-top defined in .pagination class in bootstrap.
+    //   marginTop: '0px'
+    // };
 
     const sizePerPageOptions = sizePerPageList.map((_sizePerPage) => {
       return (
@@ -98,37 +98,21 @@ class PaginationList extends Component {
         {
           sizePerPageList.length > 1
           ? <div>
-              <div className='col-md-6'>
-                { total }{ ' ' }
-                <span className='dropdown' style={ dropDownStyle }>
-                  <button className='btn btn-default dropdown-toggle'
-                    type='button' id='pageDropDown' data-toggle='dropdown'
-                    aria-expanded='true'>
-                    { sizePerPage }
-                    <span>
-                      { ' ' }
-                      <span className='caret'/>
-                    </span>
-                  </button>
-                  <ul className='dropdown-menu' role='menu' aria-labelledby='pageDropDown'>
-                    { sizePerPageOptions }
+              <div className='pagination-block text-center'>
+                <nav>
+                  <ul className='pagination'>
+                    { pageBtns }
                   </ul>
-                </span>
-              </div>
-              <div className='col-md-12'>
-                <ul className='pagination' style={ pageListStyle }>
-                  { pageBtns }
-                </ul>
+                </nav>
               </div>
             </div>
           : <div>
-              <div className='col-md-6'>
-                { total }
-              </div>
-              <div className='col-md-12'>
-                <ul className='pagination' style={ pageListStyle }>
-                  { pageBtns }
-                </ul>
+              <div className='pagination-block text-center'>
+                <nav>
+                  <ul className='pagination'>
+                    { pageBtns }
+                  </ul>
+                </nav>
               </div>
             </div>
         }
