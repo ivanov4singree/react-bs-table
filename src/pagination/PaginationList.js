@@ -62,11 +62,11 @@ class PaginationList extends Component {
     this.totalPages = Math.ceil(dataSize / sizePerPage);
     this.lastPage = this.props.pageStartIndex + this.totalPages - 1;
     const pageBtns = this.makePage();
-    // const pageListStyle = {
-    //   // float: 'right',
-    //   // override the margin-top defined in .pagination class in bootstrap.
-    //   marginTop: '0px'
-    // };
+    const pageListStyle = {
+      // float: 'right',
+      // override the margin-top defined in .pagination class in bootstrap.
+      // marginTop: '0px'
+    };
 
     const sizePerPageOptions = sizePerPageList.map((_sizePerPage) => {
       return (
@@ -98,18 +98,38 @@ class PaginationList extends Component {
         {
           sizePerPageList.length > 1
           ? <div>
+              <div className='col-md-6' style={ { display: 'none' } }>
+                { total }{ ' ' }
+                <span className='dropdown' style={ dropDownStyle }>
+                  <button className='btn btn-default dropdown-toggle'
+                    type='button' id='pageDropDown' data-toggle='dropdown'
+                    aria-expanded='true'>
+                    { sizePerPage }
+                    <span>
+                      { ' ' }
+                      <span className='caret'/>
+                    </span>
+                  </button>
+                  <ul className='dropdown-menu' role='menu' aria-labelledby='pageDropDown'>
+                    { sizePerPageOptions }
+                  </ul>
+                </span>
+              </div>
               <div className='pagination-block text-center'>
                 <nav>
-                  <ul className='pagination'>
+                  <ul className='pagination' style={ pageListStyle }>
                     { pageBtns }
                   </ul>
                 </nav>
               </div>
             </div>
           : <div>
+              <div className='col-md-6' style={ { display: 'none' } }>
+                { total }
+              </div>
               <div className='pagination-block text-center'>
                 <nav>
-                  <ul className='pagination'>
+                  <ul className='pagination' style={ pageListStyle }>
                     { pageBtns }
                   </ul>
                 </nav>
@@ -129,12 +149,12 @@ class PaginationList extends Component {
       if (this.props.currPage === this.props.pageStartIndex &&
         (page === this.props.firstPage || page === this.props.prePage)) {
         disabled = true;
-        hidden = true;
+        hidden = false;
       }
       if (this.props.currPage === this.lastPage &&
         (page === this.props.nextPage || page === this.props.lastPage)) {
         disabled = true;
-        hidden = true;
+        hidden = false;
       }
       return (
         <PageButton key={ page }
@@ -164,7 +184,7 @@ class PaginationList extends Component {
     }
 
     if (startPage !== this.props.pageStartIndex && this.totalPages > this.props.paginationSize) {
-      pages = [ this.props.firstPage, this.props.prePage ];
+      pages = [ this.props.prePage ];
     } else if (this.totalPages > 1) {
       pages = [ this.props.prePage ];
     } else {
@@ -177,8 +197,10 @@ class PaginationList extends Component {
 
     if (endPage < this.lastPage) {
       pages.push(this.props.nextPage);
-      pages.push(this.props.lastPage);
+      // pages.push(this.props.lastPage);
     } else if (endPage === this.lastPage && this.props.currPage !== this.lastPage) {
+      pages.push(this.props.nextPage);
+    } else {
       pages.push(this.props.nextPage);
     }
 
