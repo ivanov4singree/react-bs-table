@@ -1,11 +1,11 @@
 {
-  "name": "react-bootstrap-table",
+  "name": "react-bs-table",
   "version": "2.3.7",
-  "description": "It's a react table for bootstrap",
+  "description": "It's a react table for bootstrap. Forked forked AllenFang/react-bootstrap-table",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AllenFang/react-bootstrap-table.git"
+    "url": "https://github.com/ivanov4singree/react-bs-table.git"
   },
   "scripts": {
     "lint": "eslint src",
@@ -27,7 +27,7 @@
   "tags": [
     "react"
   ],
-  "author": "AllenFang",
+  "author": "Dmitry",
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.29",
