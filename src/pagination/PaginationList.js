@@ -63,7 +63,7 @@ class PaginationList extends Component {
     this.lastPage = this.props.pageStartIndex + this.totalPages - 1;
     const pageBtns = this.makePage();
     const pageListStyle = {
-      float: 'right',
+      // float: 'right',
       // override the margin-top defined in .pagination class in bootstrap.
       marginTop: '0px'
     };
@@ -115,7 +115,7 @@ class PaginationList extends Component {
                   </ul>
                 </span>
               </div>
-              <div className='col-md-6'>
+              <div className='col-md-12'>
                 <ul className='pagination' style={ pageListStyle }>
                   { pageBtns }
                 </ul>
@@ -125,7 +125,7 @@ class PaginationList extends Component {
               <div className='col-md-6'>
                 { total }
               </div>
-              <div className='col-md-6'>
+              <div className='col-md-12'>
                 <ul className='pagination' style={ pageListStyle }>
                   { pageBtns }
                 </ul>
