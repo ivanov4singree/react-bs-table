@@ -4111,11 +4111,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.totalPages = Math.ceil(dataSize / sizePerPage);
 	      this.lastPage = this.props.pageStartIndex + this.totalPages - 1;
 	      var pageBtns = this.makePage();
-	      var pageListStyle = {
-	        // float: 'right',
-	        // override the margin-top defined in .pagination class in bootstrap.
-	        marginTop: '0px'
-	      };
+	      // const pageListStyle = {
+	      //   // float: 'right',
+	      //   // override the margin-top defined in .pagination class in bootstrap.
+	      //   marginTop: '0px'
+	      // };
 
 	      var sizePerPageOptions = sizePerPageList.map(function (_sizePerPage) {
 	        return _react2['default'].createElement(
@@ -4161,39 +4161,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	          null,
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'col-md-6' },
-	            total,
-	            ' ',
+	            { className: 'pagination-block text-center' },
 	            _react2['default'].createElement(
-	              'span',
-	              { className: 'dropdown', style: dropDownStyle },
-	              _react2['default'].createElement(
-	                'button',
-	                { className: 'btn btn-default dropdown-toggle',
-	                  type: 'button', id: 'pageDropDown', 'data-toggle': 'dropdown',
-	                  'aria-expanded': 'true' },
-	                sizePerPage,
-	                _react2['default'].createElement(
-	                  'span',
-	                  null,
-	                  ' ',
-	                  _react2['default'].createElement('span', { className: 'caret' })
-	                )
-	              ),
+	              'nav',
+	              null,
 	              _react2['default'].createElement(
 	                'ul',
-	                { className: 'dropdown-menu', role: 'menu', 'aria-labelledby': 'pageDropDown' },
-	                sizePerPageOptions
+	                { className: 'pagination' },
+	                pageBtns
 	              )
-	            )
-	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'col-md-12' },
-	            _react2['default'].createElement(
-	              'ul',
-	              { className: 'pagination', style: pageListStyle },
-	              pageBtns
 	            )
 	          )
 	        ) : _react2['default'].createElement(
@@ -4201,16 +4177,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	          null,
 	          _react2['default'].createElement(
 	            'div',
-	            { className: 'col-md-6' },
-	            total
-	          ),
-	          _react2['default'].createElement(
-	            'div',
-	            { className: 'col-md-12' },
+	            { className: 'pagination-block text-center' },
 	            _react2['default'].createElement(
-	              'ul',
-	              { className: 'pagination', style: pageListStyle },
-	              pageBtns
+	              'nav',
+	              null,
+	              _react2['default'].createElement(
+	                'ul',
+	                { className: 'pagination' },
+	                pageBtns
+	              )
 	            )
 	          )
 	        )
