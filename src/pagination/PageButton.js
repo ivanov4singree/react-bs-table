@@ -18,6 +18,18 @@ class PageButton extends Component {
       'disabled': this.props.disable,
       'hidden': this.props.hidden
     });
+    const pageTrigs = {
+      is: false,
+      prev: false,
+      next: false
+    };
+    if (this.props.children === '<') {
+      pageTrigs.is = true;
+      pageTrigs.prev = true;
+    } else if (this.props.children === '>') {
+      pageTrigs.is = true;
+      pageTrigs.next = true;
+    }
     return (
       <li className={ classes }>
         <a href='#' onClick={ this.pageBtnClick }>{ this.props.children }</a>

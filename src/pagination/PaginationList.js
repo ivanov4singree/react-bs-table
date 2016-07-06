@@ -156,6 +156,7 @@ class PaginationList extends Component {
         disabled = true;
         hidden = false;
       }
+      console.log(this.props.currPage);
       return (
         <PageButton key={ page }
           changePage={ this.changePage }
@@ -196,6 +197,8 @@ class PaginationList extends Component {
     }
 
     if (endPage < this.lastPage) {
+      pages.push('...');
+      pages.push(this.lastPage);
       pages.push(this.props.nextPage);
       // pages.push(this.props.lastPage);
     } else if (endPage === this.lastPage && this.props.currPage !== this.lastPage) {
