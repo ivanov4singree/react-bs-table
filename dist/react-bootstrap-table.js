@@ -4264,6 +4264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        endPage = this.lastPage;
 	        startPage = endPage - this.props.paginationSize + 1;
 	      }
+	      console.log(this.props);
 
 	      if (startPage !== this.props.pageStartIndex && this.totalPages > this.props.paginationSize) {
 	        pages = [this.props.prePage];
@@ -4278,6 +4279,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      if (endPage < this.lastPage) {
+	        pages.push('...');
+	        pages.push(this.lastPage);
 	        pages.push(this.props.nextPage);
 	        // pages.push(this.props.lastPage);
 	      } else if (endPage === this.lastPage && this.props.currPage !== this.lastPage) {
@@ -4368,6 +4371,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'disabled': this.props.disable,
 	        'hidden': this.props.hidden
 	      });
+	      var pageTrigs = {
+	        is: false,
+	        prev: false,
+	        next: false
+	      };
+	      if (this.props.children === '<') {
+	        pageTrigs.is = true;
+	        pageTrigs.prev = true;
+	      } else if (this.props.children === '>') {
+	        pageTrigs.is = true;
+	        pageTrigs.next = true;
+	      }
 	      return _react2['default'].createElement(
 	        'li',
 	        { className: classes },

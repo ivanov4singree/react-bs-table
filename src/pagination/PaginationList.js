@@ -156,7 +156,6 @@ class PaginationList extends Component {
         disabled = true;
         hidden = false;
       }
-      console.log(this.props.currPage);
       return (
         <PageButton key={ page }
           changePage={ this.changePage }
@@ -183,6 +182,7 @@ class PaginationList extends Component {
       endPage = this.lastPage;
       startPage = endPage - this.props.paginationSize + 1;
     }
+    console.log(this.props);
 
     if (startPage !== this.props.pageStartIndex && this.totalPages > this.props.paginationSize) {
       pages = [ this.props.prePage ];
