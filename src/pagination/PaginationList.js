@@ -62,11 +62,6 @@ class PaginationList extends Component {
     this.totalPages = Math.ceil(dataSize / sizePerPage);
     this.lastPage = this.props.pageStartIndex + this.totalPages - 1;
     const pageBtns = this.makePage();
-    const pageListStyle = {
-      // float: 'right',
-      // override the margin-top defined in .pagination class in bootstrap.
-      // marginTop: '0px'
-    };
 
     const sizePerPageOptions = sizePerPageList.map((_sizePerPage) => {
       return (
@@ -117,7 +112,7 @@ class PaginationList extends Component {
               </div>
               <div className='pagination-block text-center'>
                 <nav>
-                  <ul className='pagination' style={ pageListStyle }>
+                  <ul className='pagination'>
                     { pageBtns }
                   </ul>
                 </nav>
@@ -129,7 +124,7 @@ class PaginationList extends Component {
               </div>
               <div className='pagination-block text-center'>
                 <nav>
-                  <ul className='pagination' style={ pageListStyle }>
+                  <ul className='pagination'>
                     { pageBtns }
                   </ul>
                 </nav>
@@ -153,6 +148,10 @@ class PaginationList extends Component {
       }
       if (this.props.currPage === this.lastPage &&
         (page === this.props.nextPage || page === this.props.lastPage)) {
+        disabled = true;
+        hidden = false;
+      }
+      if (page === '...') {
         disabled = true;
         hidden = false;
       }
@@ -182,7 +181,6 @@ class PaginationList extends Component {
       endPage = this.lastPage;
       startPage = endPage - this.props.paginationSize + 1;
     }
-    console.log(this.props);
 
     if (startPage !== this.props.pageStartIndex && this.totalPages > this.props.paginationSize) {
       pages = [ this.props.prePage ];

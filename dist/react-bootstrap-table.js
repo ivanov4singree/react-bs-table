@@ -1290,10 +1290,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SORT_DESC: 'desc',
 	  SORT_ASC: 'asc',
 	  SIZE_PER_PAGE: 10,
-	  NEXT_PAGE: '>',
-	  LAST_PAGE: '>>',
-	  PRE_PAGE: '<',
-	  FIRST_PAGE: '<<',
+	  NEXT_PAGE: '>>',
+	  LAST_PAGE: '->',
+	  PRE_PAGE: '<<',
+	  FIRST_PAGE: '<-',
 	  PAGE_START_INDEX: 1,
 	  ROW_SELECT_BG_COLOR: '',
 	  ROW_SELECT_NONE: 'none',
@@ -4111,11 +4111,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.totalPages = Math.ceil(dataSize / sizePerPage);
 	      this.lastPage = this.props.pageStartIndex + this.totalPages - 1;
 	      var pageBtns = this.makePage();
-	      var pageListStyle = {
-	        // float: 'right',
-	        // override the margin-top defined in .pagination class in bootstrap.
-	        // marginTop: '0px'
-	      };
 
 	      var sizePerPageOptions = sizePerPageList.map(function (_sizePerPage) {
 	        return _react2['default'].createElement(
@@ -4195,7 +4190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              null,
 	              _react2['default'].createElement(
 	                'ul',
-	                { className: 'pagination', style: pageListStyle },
+	                { className: 'pagination' },
 	                pageBtns
 	              )
 	            )
@@ -4216,7 +4211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              null,
 	              _react2['default'].createElement(
 	                'ul',
-	                { className: 'pagination', style: pageListStyle },
+	                { className: 'pagination' },
 	                pageBtns
 	              )
 	            )
@@ -4237,6 +4232,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          hidden = false;
 	        }
 	        if (this.props.currPage === this.lastPage && (page === this.props.nextPage || page === this.props.lastPage)) {
+	          disabled = true;
+	          hidden = false;
+	        }
+	        if (page === '...') {
 	          disabled = true;
 	          hidden = false;
 	        }
@@ -4264,7 +4263,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        endPage = this.lastPage;
 	        startPage = endPage - this.props.paginationSize + 1;
 	      }
-	      console.log(this.props);
 
 	      if (startPage !== this.props.pageStartIndex && this.totalPages > this.props.paginationSize) {
 	        pages = [this.props.prePage];
