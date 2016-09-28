@@ -12,7 +12,7 @@ $ gulp prod #for production
 ```
 ### Quick Demo
 ```js
-// products will be presented by react-bootstrap-table
+// 48545products will be presented by react-bootstrap-table
 var products = [{
       id: 1,
       name: "Item name 1",
